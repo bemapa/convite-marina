@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Convite da Marina · 2 aninhos</title>
+<meta name="description" content="Domingo, 10 de janeiro, às 12h. Toque para abrir o convite e confirmar presença.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Convite da Marina · 2 aninhos">
+<meta property="og:description" content="Domingo, 10 de janeiro, às 12h. Toque para abrir o convite e confirmar presença.">
+<meta property="og:url" content="https://bemapa.github.io/convite-marina/">
+<meta property="og:image" content="https://bemapa.github.io/convite-marina/capa-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#000000">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}</style>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Baloo+2:wght@500;700;800&display=swap">
+<style>
+/* Layout: coluna única de celular — vídeo no preto, a página "acende" rolando para baixo em quadros de revista em quadrinhos. Visual único, noturno e colorido. */
+:root{
+  --ink:#000; --night:#0a1338; --night-2:#132063;
+  --red:#e3221b; --red-d:#9e120d; --blue:#1d5fd8; --yellow:#ffd31a;
+  --paper:#fffaf0; --white:#ffffff; --muted:#b9c3ee;
+  --f-display:"Bangers","Impact","Arial Black",sans-serif;
+  --f-body:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{background:var(--ink);color:var(--white)}
+body{margin:0;font-family:var(--f-body);font-size:17px;line-height:1.45;overflow-x:hidden}
+h1,h2,h3{margin:0;font-family:var(--f-display);font-weight:400;letter-spacing:.04em;text-wrap:balance}
+.wrap{max-width:560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* vídeo — fundo preto igual ao do vídeo */
+.hero{background:var(--ink);padding-block:0}
+.vid{position:relative;max-width:560px;margin:0 auto}
+.vid video{display:block;width:100%;max-width:100%;aspect-ratio:1/1;background:var(--ink)}
+.som{position:absolute;right:max(12px,env(safe-area-inset-right,0px));bottom:12px;width:46px;height:46px;border:3px solid var(--ink);background:var(--yellow);
+  border-radius:50%;cursor:pointer;box-shadow:3px 3px 0 var(--red);display:grid;place-items:center;padding:0}
+.som svg{width:22px;height:22px;fill:var(--ink)}
+.som .off{display:none} .som.mudo .on{display:none} .som.mudo .off{display:block}
+.som:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--red)}
+
+/* tela de abertura — o toque libera o som */
+.abre{position:fixed;inset:0;z-index:100;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+  padding:calc(24px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));
+  background-image:radial-gradient(rgba(29,95,216,.35) 1.6px,transparent 1.8px);background-size:14px 14px;transition:opacity .5s}
+.abre .lado{display:flex;flex-direction:column;align-items:center;gap:14px}
+@media (min-aspect-ratio:1/1){.abre{flex-direction:row;gap:48px}.abre img{max-height:calc(100vh - 60px);max-height:calc(100dvh - 60px);max-width:46vw}}
+.abre.saindo{opacity:0;pointer-events:none}
+.abre{gap:18px}
+.abre img{display:block;width:auto;height:auto;max-width:min(460px,100%);max-height:calc(100vh - 210px);max-height:calc(100dvh - 210px);
+  border:4px solid var(--ink);border-radius:12px;box-shadow:8px 8px 0 var(--red),0 0 0 2px var(--yellow);animation:pop .9s cubic-bezier(.2,1.6,.4,1) both}
+.abre button{border:4px solid var(--ink);background:var(--yellow);color:var(--ink);font-family:var(--f-display);font-size:34px;letter-spacing:.06em;
+  padding:14px 34px 10px;border-radius:999px;cursor:pointer;box-shadow:6px 6px 0 var(--red);animation:pulsa 1.4s ease-in-out infinite}
+.abre button:active{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--red)}
+.abre p{margin:0;color:var(--muted);font-weight:700;text-align:center}
+@keyframes pulsa{50%{transform:scale(1.07)}}
+
+/* transição preto -> noite em quadrinhos */
+.fade{height:180px;margin-top:-1px;background:linear-gradient(180deg,var(--ink) 0%,var(--night) 100%);position:relative;overflow:hidden}
+.fade::after{content:"";position:absolute;inset:0;opacity:.5;
+  background-image:radial-gradient(var(--blue) 1.6px,transparent 1.8px);background-size:14px 14px;
+  -webkit-mask:linear-gradient(180deg,transparent 0%,#000 100%);mask:linear-gradient(180deg,transparent 0%,#000 100%)}
+.titulo{position:relative;z-index:2;margin-top:-150px;padding-block:0 8px}
+.titulo img{display:block;width:100%;filter:drop-shadow(0 8px 0 rgba(0,0,0,.35));animation:pop .9s cubic-bezier(.2,1.6,.4,1) both .3s}
+@keyframes pop{0%{transform:scale(.9) rotate(-2deg)}100%{transform:none}}
+
+main{background:var(--night);position:relative;padding-block:8px 60px}
+main::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;
+  background-image:radial-gradient(var(--blue) 1.6px,transparent 1.8px);background-size:14px 14px}
+.stack{position:relative;display:flex;flex-direction:column;gap:30px}
+
+/* idade */
+.idade{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:6px}
+.burst{width:190px;height:190px;flex:none;background:var(--yellow);display:grid;place-items:center;position:relative;
+  clip-path:polygon(50% 0,61% 18%,80% 8%,79% 29%,100% 30%,86% 47%,100% 63%,79% 68%,84% 90%,63% 81%,50% 100%,38% 81%,16% 90%,21% 68%,0 63%,14% 47%,0 30%,21% 29%,20% 8%,39% 18%);
+  animation:wob 3s ease-in-out infinite}
+.burst b{font-family:var(--f-display);font-weight:400;font-size:130px;line-height:1;color:var(--red);-webkit-text-stroke:5px var(--ink);paint-order:stroke;margin-top:12px}
+@keyframes wob{50%{transform:rotate(6deg) scale(1.04)}}
+.idade-txt{font-family:var(--f-display);font-size:46px;line-height:.92;transform:rotate(-4deg)}
+.idade-txt span{display:block;color:var(--yellow);font-size:58px;-webkit-text-stroke:2px var(--ink);paint-order:stroke}
+.chamada{text-align:center;color:var(--muted);font-weight:700;font-size:19px;margin:0 auto;max-width:34ch}
+.chamada strong{color:var(--white)}
+
+/* quadros */
+.quadro{background:var(--paper);color:var(--ink);border:4px solid var(--ink);border-radius:6px;box-shadow:8px 8px 0 var(--red);padding:20px 18px;position:relative}
+.quadro.azul{box-shadow:8px 8px 0 var(--blue)}
+.quadro h2{font-size:34px;line-height:1;color:var(--red);-webkit-text-stroke:1px var(--ink)}
+.etq{position:absolute;top:-18px;left:14px;background:var(--yellow);border:3px solid var(--ink);font-family:var(--f-display);font-size:19px;letter-spacing:.06em;padding:2px 12px 0;transform:rotate(-3deg)}
+
+.cont{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px}
+.cont div{background:var(--night-2);color:var(--white);border:3px solid var(--ink);border-radius:6px;text-align:center;padding:8px 2px 4px}
+.cont b{display:block;font-family:var(--f-display);font-weight:400;font-size:42px;line-height:1;font-variant-numeric:tabular-nums;color:var(--yellow)}
+.cont small{font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+
+.infos{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.info{display:flex;gap:14px;align-items:flex-start}
+.ico{width:48px;height:48px;flex:none;border:3px solid var(--ink);border-radius:50%;background:var(--red);display:grid;place-items:center}
+.ico svg{width:24px;height:24px;fill:none;stroke:var(--white);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.info div{min-width:0}
+.info small{display:block;font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:var(--red-d)}
+.info p{margin:0;font-weight:800;font-size:21px;line-height:1.2}
+.info p span{display:block;font-weight:500;font-size:16px;color:#3a3f57}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:3px solid var(--ink);border-radius:999px;padding:10px 18px 8px;
+  font-family:var(--f-display);font-size:21px;letter-spacing:.06em;text-decoration:none;color:var(--ink);background:var(--yellow);box-shadow:4px 4px 0 var(--ink);cursor:pointer}
+.btn.azul{background:var(--blue);color:var(--white)}
+.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn.big{width:100%;font-size:26px;padding:14px 18px 11px;background:#25d366;color:var(--ink)}
+.btn.big svg{width:26px;height:26px;fill:var(--ink)}
+
+form{display:flex;flex-direction:column;gap:14px;margin-top:10px}
+label{font-weight:800;font-size:15px;display:flex;flex-direction:column;gap:5px}
+input,textarea{font:inherit;font-weight:500;color:var(--ink);background:var(--white);border:3px solid var(--ink);border-radius:8px;padding:10px 12px;width:100%;min-width:0}
+input:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--yellow)}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.step{display:flex;align-items:center;border:3px solid var(--ink);border-radius:8px;background:var(--white);overflow:hidden}
+.step button{width:44px;height:46px;border:0;background:var(--yellow);font-family:var(--f-display);font-size:28px;cursor:pointer;color:var(--ink);flex:none}
+.step input{border:0;border-radius:0;text-align:center;font-weight:800;font-size:20px;padding:8px 0;font-variant-numeric:tabular-nums}
+.erro{color:var(--red);font-weight:800;margin:0}
+.nota{font-size:14px;color:#3a3f57;margin:0;text-align:center}
+.nota b{user-select:all}
+
+.fim{text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center}
+.fim h2{font-size:52px;line-height:.95;color:var(--yellow);-webkit-text-stroke:2px var(--ink);paint-order:stroke;transform:rotate(-2deg)}
+.fim p{margin:0;color:var(--muted);font-weight:700}
+.pow{position:absolute;font-family:var(--f-display);color:var(--ink);background:var(--yellow);border:3px solid var(--ink);padding:4px 10px 0;font-size:24px;transform:rotate(12deg);right:-6px;top:-22px;box-shadow:3px 3px 0 var(--red)}
+.cidade{display:block;width:100%;height:90px;margin-top:20px}
+
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+@media (max-width:420px){
+  .burst{width:150px;height:150px}.burst b{font-size:100px}
+  .idade-txt{font-size:38px}.idade-txt span{font-size:48px}
+  .cont b{font-size:34px}
+  .quadro h2{font-size:30px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="abre" id="abre">
+  <img src="capa.jpg" alt="Marina e seus amigos aranhas espetaculares">
+  <div class="lado"><button type="button" id="abrir">Abrir convite</button>
+  <p>Toque para ver com som</p></div>
+</div>
+
+<section class="hero">
+  <div class="vid">
+    <video id="video" src="video.mp4" poster="poster.jpg" muted playsinline preload="auto"></video>
+    <audio id="musica" src="musica.mp3" preload="auto" loop></audio>
+    <button class="som" id="som" type="button" aria-label="Desligar o som" hidden><svg class="on" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg><svg class="off" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4zm15.6 3 2.1-2.1-1.4-1.4-2.1 2.1-2.1-2.1-1.4 1.4 2.1 2.1-2.1 2.1 1.4 1.4 2.1-2.1 2.1 2.1 1.4-1.4z"/></svg></button>
+  </div>
+</section>
+<div class="fade"></div>
+
+<main>
+  <div class="wrap stack">
+    <div class="titulo"><img src="titulo.png" alt="Marina e seus amigos aranhas espetaculares"></div>
+
+    <div class="idade" aria-label="Marina vai fazer 2 anos">
+      <div class="burst"><b>2</b></div>
+      <div class="idade-txt">Vou fazer<span>2 aninhos!</span></div>
+    </div>
+    <p class="chamada">Prepare seus superpoderes: você é meu convidado <strong>espetacular</strong> para essa aventura!</p>
+
+    <section class="quadro azul" aria-labelledby="t-cont">
+      <span class="etq">Contagem regressiva</span>
+      <h2 id="t-cont">Faltam só…</h2>
+      <div class="cont" id="cont">
+        <div><b id="cd-d">--</b><small>dias</small></div>
+        <div><b id="cd-h">--</b><small>horas</small></div>
+        <div><b id="cd-m">--</b><small>min</small></div>
+        <div><b id="cd-s">--</b><small>seg</small></div>
+      </div>
+    </section>
+
+    <section class="quadro" aria-labelledby="t-quando">
+      <span class="pow">UAU!</span>
+      <span class="etq">A missão</span>
+      <h2 id="t-quando">Quando e onde</h2>
+      <div class="infos">
+        <div class="info">
+          <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+          <div><small>Data</small><p>Domingo, 10 de janeiro<span>de 2027</span></p></div>
+        </div>
+        <div class="info">
+          <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><small>Horário</small><p>12h</p></div>
+        </div>
+        <div class="info">
+          <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <div><small>Local</small><p id="end-1">Endereço a confirmar<span id="end-2"></span></p></div>
+        </div>
+      </div>
+      <div class="btns" id="mapas" hidden>
+        <a class="btn" id="lk-maps" href="#" target="_blank" rel="noopener">Abrir no Maps</a>
+        <a class="btn azul" id="lk-waze" href="#" target="_blank" rel="noopener">Ir pelo Waze</a>
+      </div>
+    </section>
+
+    <section class="quadro azul" aria-labelledby="t-rsvp">
+      <span class="etq">Confirme sua presença</span>
+      <h2 id="t-rsvp">Você vem?</h2>
+      <form id="rsvp" novalidate>
+        <label for="nome">Seu nome
+          <input id="nome" name="nome" autocomplete="name" placeholder="Ex.: Tia Ana">
+        </label>
+        <div class="nums">
+          <label for="adultos">Adultos
+            <div class="step"><button type="button" data-t="adultos" data-d="-1" aria-label="Menos adultos">−</button><input id="adultos" inputmode="numeric" value="1"><button type="button" data-t="adultos" data-d="1" aria-label="Mais adultos">+</button></div>
+          </label>
+          <label for="criancas">Crianças
+            <div class="step"><button type="button" data-t="criancas" data-d="-1" aria-label="Menos crianças">−</button><input id="criancas" inputmode="numeric" value="0"><button type="button" data-t="criancas" data-d="1" aria-label="Mais crianças">+</button></div>
+          </label>
+        </div>
+        <label for="recado">Recado para a Marina (opcional)
+          <textarea id="recado" rows="2" placeholder="Parabéns, Marina!"></textarea>
+        </label>
+        <p class="erro" id="erro" hidden>Escreva seu nome para confirmar.</p>
+        <a class="btn big" id="enviar" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.2-.7-2.7-1.1-4.4-3.8-4.5-4-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.2z"/></svg>Confirmar no WhatsApp</a>
+        <p class="nota" id="nota">A confirmação abre o WhatsApp com a mensagem pronta. É só tocar em enviar.</p>
+      </form>
+    </section>
+
+    <div class="fim">
+      <h2>Te espero lá!</h2>
+      <p>Com carinho, Marina, papai e mamãe</p>
+    </div>
+  </div>
+  <svg class="cidade" viewBox="0 0 600 90" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#05091f" d="M0 90V52h26V30h22v22h14V18h30v34h10V40h24v50h8V24h34v28h12V8h28v44h12V36h22v14h18V22h30v30h14V44h24V14h32v38h10V34h26v18h14V26h28v26h16V40h22v50z"/>
+    <g fill="#ffd31a" opacity=".85"><rect x="72" y="26" width="5" height="6"/><rect x="82" y="38" width="5" height="6"/><rect x="186" y="18" width="5" height="6"/><rect x="194" y="32" width="5" height="6"/><rect x="306" y="30" width="5" height="6"/><rect x="418" y="24" width="5" height="6"/><rect x="430" y="38" width="5" height="6"/><rect x="536" y="34" width="5" height="6"/></g>
+  </svg>
+</main>
+
+<script>
+/* ===== Dados do convite: preencher aqui ===== */
+const WHATS = "5521990675289";                 // número com DDD, só dígitos, ex.: "5521999998888"
+const ENDERECO = "Rua Elisa Siqueira, 45";
+const BAIRRO = "Tomazinho · São João de Meriti";                // ex.: "Tomazinho · São João de Meriti"
+const FESTA = new Date("2027-01-10T12:00:00-03:00");
+
+const $ = id => document.getElementById(id);
+
+// abertura, vídeo e música
+const v = $("video"), mu = $("musica"), som = $("som");
+const BAIXO = 0.22, CORTE = 28;      // volume baixo e segundo da música em que abaixa
+let ctx = null, gain = null, fase = 0, mudo = false;
+function ligarAudio(){
+  if (ctx) return;
+  try {
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    gain = ctx.createGain(); gain.gain.value = 1;
+    ctx.createMediaElementSource(mu).connect(gain).connect(ctx.destination);
+  } catch(e) { ctx = null; gain = null; }
+}
+function volume(x, seg){
+  if (gain && ctx) {
+    const t = ctx.currentTime;
+    gain.gain.cancelScheduledValues(t); gain.gain.setValueAtTime(gain.gain.value, t);
+    gain.gain.linearRampToValueAtTime(x, t + seg);
+  } else { mu.volume = x; }
+}
+function aplicarMudo(){
+  v.muted = mudo || fase >= 2; mu.muted = mudo;
+  som.classList.toggle("mudo", mudo);
+  som.setAttribute("aria-label", mudo ? "Ligar o som" : "Desligar o som");
+}
+$("abrir").addEventListener("click", () => {
+  ligarAudio(); if (ctx) ctx.resume().catch(()=>{});
+  // libera a música no iPhone ainda dentro do toque
+  mu.muted = true; mu.play().then(() => { mu.pause(); mu.currentTime = 0; mu.muted = mudo; }).catch(()=>{});
+  fase = 1; v.loop = false; v.currentTime = 0; aplicarMudo();
+  v.play().catch(() => { v.muted = true; v.play().catch(()=>{}); });
+  $("abre").classList.add("saindo"); setTimeout(() => { $("abre").hidden = true; }, 500);
+  som.hidden = false; window.scrollTo(0, 0);
+});
+v.addEventListener("ended", () => {
+  if (fase !== 1) return;
+  fase = 2; aplicarMudo(); volume(1, 0);
+  mu.currentTime = 0; mu.play().catch(()=>{});
+});
+mu.addEventListener("timeupdate", () => {
+  if (fase === 2 && mu.currentTime >= CORTE) {
+    fase = 3; volume(BAIXO, 1.5); aplicarMudo();
+    v.loop = true; v.currentTime = 0; v.play().catch(()=>{});
+  }
+});
+som.addEventListener("click", () => { mudo = !mudo; aplicarMudo(); });
+
+// endereço
+if (ENDERECO) {
+  $("end-1").firstChild.textContent = ENDERECO;
+  $("end-2").textContent = BAIRRO;
+  const q = encodeURIComponent(ENDERECO + ", " + BAIRRO);
+  $("lk-maps").href = "https://www.google.com/maps/search/?api=1&query=" + q;
+  $("lk-waze").href = "https://waze.com/ul?q=" + q + "&navigate=yes";
+  $("mapas").hidden = false;
+}
+
+// contagem regressiva
+const pad = n => String(n).padStart(2, "0");
+function tick(){
+  let s = Math.max(0, Math.floor((FESTA - Date.now()) / 1000));
+  const d = Math.floor(s / 86400); s %= 86400;
+  $("cd-d").textContent = d; $("cd-h").textContent = pad(Math.floor(s/3600));
+  $("cd-m").textContent = pad(Math.floor(s%3600/60)); $("cd-s").textContent = pad(s%60);
+}
+tick(); setInterval(tick, 1000);
+
+// contadores
+document.querySelectorAll(".step button").forEach(b => b.addEventListener("click", () => {
+  const i = $(b.dataset.t); i.value = Math.max(0, (parseInt(i.value)||0) + +b.dataset.d); montar();
+}));
+
+// mensagem do WhatsApp
+function montar(){
+  const nome = $("nome").value.trim();
+  const a = parseInt($("adultos").value)||0, c = parseInt($("criancas").value)||0;
+  const rec = $("recado").value.trim();
+  let msg = `Oi! Confirmo presença no aniversário de 2 anos da Marina (10/01, 12h)!\nNome: ${nome}\nAdultos: ${a}\nCrianças: ${c}`;
+  if (rec) msg += `\nRecado: ${rec}`;
+  $("enviar").href = WHATS ? `https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}` : "#";
+  return nome;
+}
+["nome","adultos","criancas","recado"].forEach(id => $(id).addEventListener("input", () => { $("erro").hidden = true; montar(); }));
+montar();
+if (WHATS) $("nota").innerHTML = `Abre o WhatsApp com a mensagem pronta para <b>+${WHATS}</b>. É só tocar em enviar.`;
+$("enviar").addEventListener("click", e => {
+  if (!montar()) { e.preventDefault(); $("erro").hidden = false; $("nome").focus(); return; }
+  if (!WHATS) { e.preventDefault(); $("erro").textContent = "Número do WhatsApp ainda não configurado."; $("erro").hidden = false; }
+});
+$("rsvp").addEventListener("submit", e => e.preventDefault());
+</script>
+
+</body>
+</html>
